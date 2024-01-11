@@ -89,7 +89,7 @@
       <img id="image" src="https://media4.giphy.com/media/UZPfOgdHYKMcRjCRDq/200w.webp?cid=ecf05e47imbyqxio5o4s1kc3rp9p09qgni1u09nt3b0c37r8&ep=v1_stickers_search&rid=200w.webp&ct=s"><br>
       <div id="container">
         <button class="myButton1" id="sendEmailBtn" onclick="success()">Yes</button>
-        <button id="myButton2" onmouseover="moveButton()">No</button>
+        <button id="myButton2" onclick="moveButton()">No</button>
       </div>
     </div>
   </div>
@@ -100,18 +100,18 @@
     image.src="https://media2.giphy.com/media/vMQwdgZ66AFB10bQyY/giphy.gif?cid=ecf05e4700o8ukqoehoojt955142ji9bngws6tyiax3jaafa&ep=v1_stickers_search&rid=giphy.gif&ct=s";
   }
   function moveButton() {
-    var container = document.getElementById("container");
-    var button = document.getElementById("myButton2");
+    // var container = document.getElementById("container");
+    // var button = document.getElementById("myButton2");
 
-    var containerRect = container.getBoundingClientRect();
-    var maxX = containerRect.width - button.offsetWidth;
-    var maxY = containerRect.height - button.offsetHeight;
+    // var containerRect = container.getBoundingClientRect();
+    // var maxX = containerRect.width - button.offsetWidth;
+    // var maxY = containerRect.height - button.offsetHeight;
 
-    var randomX = Math.floor(Math.random() * maxX);
-    var randomY = Math.floor(Math.random() * maxY);
+    // var randomX = Math.floor(Math.random() * maxX);
+    // var randomY = Math.floor(Math.random() * maxY);
 
-    button.style.left = randomX + "px";
-    button.style.top = randomY + "px";
+    // button.style.left = randomX + "px";
+    // button.style.top = randomY + "px";
     alert("mai sirf naseeb walo ko milta hu");
   }
 </script>
