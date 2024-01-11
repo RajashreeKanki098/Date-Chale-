@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    #container {
+      position: relative;
+      width: 400px;
+      height: 900px;
+      overflow: hidden;
+    }
+
+    #myButton2 {
+      position: absolute;
+      top: 50%;
+      left: 60%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 40px;
+      background-color: #9b60c3;
+      font-weight: 800;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .myButton1 {
+      position: absolute;
+      top: 50%;
+      right: 60%;
+      transform: translate(-50%, -50%);
+      width: 100px;
+      height: 40px;
+      background-color: #9b60c3;
+      font-weight: 800;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .bg-purple {
+      color: #fff;
+      background: -webkit-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -webkit-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+      background: -o-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -o-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+      background: -moz-linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), -moz-radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+      background: linear-gradient(110deg, #a60af3 40%, rgba(0, 0, 0, 0) 30%), radial-gradient(farthest-corner at 0% 0%, #7a00cc 70%, #c03fff 70%);
+      text-align: center;
+      width: 100%;
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    }
+    .card {
+      font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+      font-size: 2em;
+      font-weight: 800;
+      width: 100%;
+      height: 100vh;
+      border-radius: 0.25em;
+      letter-spacing: -2px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+    .card-holder {
+      width: 100%;
+      background-size: auto;
+      display: flex; /* Use flexbox for centering */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+<!-- <div id="container">
+  <div class="card-holder">
+    <div class="card">
+      <div class="card bg-purple">
+      <button id="myButton" onmouseover="moveButton()">No</button>
+    </div>
+  </div></div>
+</div> -->
+<div class="card">
+  <div class="card-holder">
+    <div class="card bg-purple">
+      Do you wanna go for a date?<br>
+      <img id="image" src="https://media4.giphy.com/media/UZPfOgdHYKMcRjCRDq/200w.webp?cid=ecf05e47imbyqxio5o4s1kc3rp9p09qgni1u09nt3b0c37r8&ep=v1_stickers_search&rid=200w.webp&ct=s"><br>
+      <div id="container">
+        <button class="myButton1" id="sendEmailBtn" onclick="success()">Yes</button>
+        <button id="myButton2" onmouseover="moveButton()">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function success(){
+    var ig=document.getElementById("image");
+    image.src="https://media2.giphy.com/media/vMQwdgZ66AFB10bQyY/giphy.gif?cid=ecf05e4700o8ukqoehoojt955142ji9bngws6tyiax3jaafa&ep=v1_stickers_search&rid=giphy.gif&ct=s";
+  }
+  function moveButton() {
+    var container = document.getElementById("container");
+    var button = document.getElementById("myButton2");
+
+    var containerRect = container.getBoundingClientRect();
+    var maxX = containerRect.width - button.offsetWidth;
+    var maxY = containerRect.height - button.offsetHeight;
+
+    var randomX = Math.floor(Math.random() * maxX);
+    var randomY = Math.floor(Math.random() * maxY);
+
+    button.style.left = randomX + "px";
+    button.style.top = randomY + "px";
+  }
+</script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize Email.js with your user ID
+    emailjs.init("jTcw9PT2yoYtIYuYK");
+
+    // Function to send an email
+    function sendEmail() {
+      // Replace with your email template ID from Email.js
+      const templateId = "template_54orvb5";
+
+      // Replace with your template parameters
+      const templateParams = {
+        to_email: "kankirajashree@gmail.com",
+        subject: "Subject of the email",
+        message: "Yes"
+      };
+
+      // Send the email
+      emailjs.send("service_mhjwyup", templateId, templateParams)
+        .then(function(response) {
+          console.log("Email sent successfully:", response);
+        }, function(error) {
+          console.error("Error sending email:", error);
+        });
+    }
+
+    // Attach the click event to the button
+    document.getElementById("sendEmailBtn").addEventListener("click", sendEmail);
+  </script>
+
+</body>
+</html>
